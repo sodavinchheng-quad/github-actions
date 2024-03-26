@@ -34,9 +34,9 @@ set -o allexport
 echo $(ls -a)
 
 # bucket name is not specified
-# bucket="$REACT_APP_GCS_BUCKET"
-# echo "$bucket . $REACT_APP_GCS_BUCKET . $NODE_ENV . $MODE"
-# [[ -z "$bucket" ]] && { echo "ERROR: bucket name not found. Please check .env file"; exit 1; }
+bucket="$REACT_APP_GCS_BUCKET"
+echo "$bucket . $REACT_APP_GCS_BUCKET"
+[[ -z "$bucket" ]] && { echo "ERROR: bucket name not found. Please check .env file"; exit 1; }
 
 FLAG_CACHE=0
 LOCAL_PATH=""
