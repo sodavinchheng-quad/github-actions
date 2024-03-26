@@ -1,13 +1,14 @@
 .PHONY: local
- local:
- 	chmod +x ./deploy.sh;
- 	./deploy.sh local -p ./build/_local_
+local:
+	chmod +x ./deploy.sh;
+	./deploy.sh local -p ./build/_local_
 
- .PHONY: dev
- dev:
- 	chmod +x ./deploy.sh;
- 	./deploy.sh development;
+.PHONY: dev
+dev:
+	chmod +x ./deploy.sh;
+	./deploy.sh development;
 
- .PHONY: prd
- prd:
- 	chmod +x ./deploy.sh;
+.PHONY: prd
+prd:
+	chmod +x ./deploy.sh;
+	./deploy.sh production;
