@@ -23,8 +23,7 @@ jobs:
       - id: google-auth
         uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: ${{ secrets.DEV_GCS_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.DEV_GCS_SERVICE_ACCOUNT }}
+          credentials_json: '${{ secrets.DEV_GCS_SERVICE_ACCOUNT_CREDENTIAL_JSON }}'
 
       - name: Setup - gcloud / gsutil
         uses: google-github-actions/setup-gcloud@v2
