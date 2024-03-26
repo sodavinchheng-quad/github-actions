@@ -42,7 +42,7 @@ jobs:
         id: write_env_file
         uses: timheuer/base64-to-file@v1.1
         with:
-          fileName: ".env"
+          fileName: ".env.development"
           fileDir: "./"
           encodedString: ${{ secrets.DEV_ENV_DATA }}
 
