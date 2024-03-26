@@ -33,6 +33,7 @@ set -o allexport
 
 echo $(pwd)
 echo $(ls -a)
+echo $(cat .env.development)
 
 # bucket name is not specified
 bucket="$REACT_APP_GCS_BUCKET"
