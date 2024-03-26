@@ -31,6 +31,8 @@ fi
 set -o allexport
 . $CURRENT_DIR/.env."$MODE"
 
+echo $(ls -a)
+
 # bucket name is not specified
 # bucket="$REACT_APP_GCS_BUCKET"
 # echo "$bucket . $REACT_APP_GCS_BUCKET . $NODE_ENV . $MODE"
@@ -52,6 +54,8 @@ done
 
 function _main() {
   yarn run build --mode "$MODE"
+
+  echo $(ls -a)
 
   # if local, deploy to local path
 #   if [[ "$MODE" == "local" ]]; then
