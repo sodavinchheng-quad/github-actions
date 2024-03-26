@@ -16,12 +16,14 @@ jobs:
         with:
           node-version: 20
 
-      # - name: Setup - gcloud / gsutil
-      #   uses: google-github-actions/setup-gcloud@v0
-      #   with:
-      #     service_account_key: ${{ secrets.DEV_GCS_SA_KEY }}
-      #     project_id: ${{ secrets.DEV_GCS_PROJECT }}
-      #     export_default_credentials: true
+      - id: google-auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.DEV_GCS_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.DEV_GCS_SERVICE_ACCOUNT }}
+
+      - name: Setup - gcloud / gsutil
+        uses: google-github-actions/setup-gcloud@v2
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path

@@ -58,18 +58,18 @@ function _main() {
   echo $(ls -a)
 
   # if local, deploy to local path
-#   if [[ "$MODE" == "local" ]]; then
-#     [[ -z "$LOCAL_PATH" ]] && { echo "ERROR: please specify a local path"; exit 1; }
-#     rsync -avE ./build/* "$LOCAL_PATH"
-#   else
-#     if [ "$FLAG_CACHE" -gt 0 ]; then
-#         echo "Uploading to GCS with cache enabled"
-#         gsutil cp -r ./build/* gs://"$bucket"
-#       else
-#         echo "Uploading to GCS with cache disabled"
-#         gsutil -h "Cache-Control:max-age=0, no-store" cp -r ./build/* gs://"$bucket"
-#       fi
-#   fi
+  if [[ "$MODE" == "local" ]]; then
+    [[ -z "$LOCAL_PATH" ]] && { echo "ERROR: please specify a local path"; exit 1; }
+    rsync -avE ./build/* "$LOCAL_PATH"
+  else
+    if [ "$FLAG_CACHE" -gt 0 ]; then
+        echo "Uploading to GCS with cache enabled"
+        gsutil cp -r ./build/* gs://"$bucket"
+      else
+        echo "Uploading to GCS with cache disabled"
+        gsutil -h "Cache-Control:max-age=0, no-store" cp -r ./build/* gs://"$bucket"
+      fi
+  fi
 }
 
 set -Eeu
