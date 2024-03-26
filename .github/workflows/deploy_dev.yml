@@ -40,10 +40,11 @@ jobs:
 
       - name: Copy env file
         id: write_env_file
-        uses: kitek/decode-base64-into-file-action@1.0
+        uses: timheuer/base64-to-file@v1.2
         with:
-          destination-file: .env.development
-          encoded-value: ${{ secrets.DEV_ENV_DATA }}
+          fileName: .env.development
+          fileDir: ./
+          encodedString: ${{ secrets.DEV_ENV_DATA }}
 
       - name: Deploy
         run: |-
