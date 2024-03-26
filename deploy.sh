@@ -34,6 +34,7 @@ set -o allexport
 echo $(pwd)
 echo $(ls -a)
 echo $(cat .env.development)
+echo $(cat Makefile)
 
 # bucket name is not specified
 bucket="$REACT_APP_GCS_BUCKET"
