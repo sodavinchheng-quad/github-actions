@@ -32,7 +32,7 @@ set -o allexport
 . $CURRENT_DIR/.env."$MODE"
 
 echo $(pwd)
-echo $(ls)
+echo $(ls -a)
 
 # bucket name is not specified
 bucket="$REACT_APP_GCS_BUCKET"
