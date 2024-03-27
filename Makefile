@@ -12,3 +12,7 @@ dev:
 prd:
 	chmod +x ./deploy.sh;
 	./deploy.sh production;
+
+.PHONY: test
+test:
+	yarn test;

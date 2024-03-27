@@ -1,13 +1,14 @@
-name: Build and deploy to dev
+name: Run unit test
 
 on:
+  pull_request:
+    types: [opened, reopened]
   push:
-    branches: [release-develop]
+    branches: ['**']
 
 jobs:
-  build:
+  suites:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -15,14 +16,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - id: google-auth
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: '${{ secrets.DEV_GCS_SERVICE_ACCOUNT_CREDENTIAL_JSON }}'
-
-      - name: Setup - gcloud / gsutil
-        uses: google-github-actions/setup-gcloud@v2
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -39,14 +32,5 @@ jobs:
       - name: Install Dependencies
         run: yarn install --prefer-offline
 
-      - name: Copy env file
-        id: write_env_file
-        uses: timheuer/base64-to-file@v1.2
-        with:
-          fileName: .env.development
-          fileDir: ./
-          encodedString: ${{ secrets.DEV_ENV_DATA }}
-
-      - name: Deploy
-        run: |-
-          make dev
+      - name: Run the tests
+        run: make test
